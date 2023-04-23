@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/logoA.png">
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/signup&login.css">
+    <title>Document</title>
+</head>
+<body>
+        <div class="container">
+          <div class="backbox">
+            <div class="loginMsg">
+              <div class="textcontent">
+                <p class="title">Don't have an account?</p>
+                <p>Sign up to save all your graph.</p>
+                <button class="button" id="switch1">
+                  SIGNUP
+                  <div></div>
+                </button>
+                
+              </div>
+            </div>
+            <div class="signupMsg">
+              <div class="textcontent">
+                <p class="title">Have an account?</p>
+                <p>Log in to see all your collection.</p>
+                <button class="button" id="switch2">
+                  SIGNIN
+                  <div></div>
+                </button>              </div>
+            </div>
+          </div>
+          <!-- backbox -->
+      
+          <div class="frontbox">
+            <div class="login">
+              <h2>LOG IN</h2>
+              <form class="sign-in">
+              <div class="inputbox">
+                <div class="val">
+                  <input type="text" name="username" placeholder="FULLNAME" required>
+                    <span class="error-username error"></span>
+                </div>
+                <div class="val">
+                  <input type="password" name="password" placeholder="PASSWORD" required>
+                  <span class="error-password  error"></span>
+                </div>
+              </div>
+              <p>FORGET PASSWORD?</p>
+              <button type="submit" class="button">SIGNIN<div></div><i class="fa fa-check"></i></button>
+            </form>
+            </div>
+      
+            <div class="signup hide">
+              <h2>SIGN UP</h2>
+              <form class="sign-up">
+                <div class="inputbox">
+                  <div class="val">
+                    <input type="text" name="username" placeholder="FULLNAME" required>
+                    <span class="error-username error"></span>
+                  </div>
+                  <div class="val">
+                    <input type="text" name="email" placeholder="EMAIL" id="email" required>
+                    <span class="error-email  error"></span>
+                  </div>
+                  <div class="val">
+                    <input type="password" name="password" placeholder="PASSWORD" required>
+                    <span class="error-password  error"></span>
+                  </div>
+                    <input type="text" name="photo" placeholder="YOUR PHOTO" required>
+                </div>
+                <button type="submit" class="button">SIGNUP<div></div><i class="fa fa-check"></i></button>
+              </form>
+              
+            </div>
+      
+          </div>
+          <!-- frontbox -->
+        </div>
+        <script src="../js/login.js"></script>
+</body>
+</html>
