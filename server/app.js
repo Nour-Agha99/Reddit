@@ -1,7 +1,8 @@
 const express = require('express')
 const compression = require('compression')
 const path = require('path')
-const router = require('./router')
+const parser = require('cookie-parser')
+const router = require('./routes')
 
 const app = express()
 app.disable('x-powerd-by')
@@ -11,10 +12,9 @@ app.use([
     express.json(),
     express.urlencoded({ extended: false }),
     compression(),
+    parser(),
     express.static(path.join(__dirname, '..', 'public')),
     router
 ])
-app.use('/hello', (req, res) => {
-    res.send('Hello World!')
-})
+
 module.exports = app
