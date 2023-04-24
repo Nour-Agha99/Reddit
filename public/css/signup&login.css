@@ -178,21 +178,22 @@
   }
   .textcontent .button {
     backface-visibility: hidden;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  white-space: nowrap;
-  background: #58c;
-  border-radius: 0px;
-  border: 0px solid #246;
-  border-width: 0px 0px 4px 0px;
-  padding: 10px 20px 10px 20px;
-    color: #fff;
-  font-size: initial;
-  font-family: Helvetica Neue;
-  font-weight: 900;
-  font-style: normal;
-  margin-top: 1rem;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    background: #000000;
+    border-radius: 0px;
+    border: 0px solid #246;
+    border-width: 0px 0px 4px 0px;
+    padding: 10px 20px 10px 20px;
+    color: #146bfd;
+    font-size: initial;
+    font-family: Helvetica Neue;
+    font-weight: 900;
+    font-style: normal;
+    border-radius: 6px;
+    margin-top: 1rem;
   }
   .textcontent .button > div {
     color: #999;

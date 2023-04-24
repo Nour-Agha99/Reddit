@@ -19,6 +19,15 @@ document.addEventListener('click', (event) => {
     }
 })
 
+postInput.addEventListener('focus', (event) => {
+    container.classList.add('show')
+    postTitle.focus()
+})
+
+deleteBtn.addEventListener('click', (event) => {
+    container.classList.remove('show')
+})
+
 fetch('/api/v1/userData', {
     method: 'GET',
     headers: {
@@ -46,6 +55,5 @@ postForm.addEventListener('submit', (btn) => {
         },
         body: JSON.stringify(data)
     })
-    postForm.reset()
-    container.classList.remove('show')
+    location.reload()
 })

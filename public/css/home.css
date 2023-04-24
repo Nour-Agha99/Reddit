@@ -493,23 +493,6 @@
     width: 100%;
     background-color: #0d1117;
   }
-  .right-par-circle {
-    background-color: #0d1117;
-    width: 100%;
-  }
-  .right-par-circle > span {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #dfdfdf6f;
-    display: inline-block;
-  }
-  .right-par-circle > p {
-    display: inline-block;
-    background-color: #262626;
-    width: 80%;
-    height: 35px;
-  }
   .right-par-btn > button {
     margin-top: 1rem;
     background-color: #0089f2;
@@ -695,11 +678,6 @@
   .post-part-1 > span {
     font-size: 13px;
     opacity: 0.6;
-    cursor: pointer;
-  }
-  .post-part-1 p {
-    font-size: 1.3rem;
-    font-weight: bold;
     cursor: pointer;
   }
   .post-part-1 > button {
