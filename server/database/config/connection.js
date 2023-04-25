@@ -5,7 +5,7 @@ const { DB_URL, NODE_ENV } = process.env
 
 const option = {
     connectionString: DB_URL,
-    ssl: NODE_ENV === true
+    ssl: true
 }
 
 const connection = new Pool(option)
