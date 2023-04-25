@@ -1,6 +1,6 @@
 const { profileInfoQuery } = require('../../../database/queries')
 
-const profileInfoController = (req, res, next) => {
+const profileInfo = (req, res, next) => {
     const username = req.params.username
     profileInfoQuery(username).then((data) => {
         console.log(data)
@@ -8,4 +8,4 @@ const profileInfoController = (req, res, next) => {
     }).catch((err) => next(err))
 }
 
-module.exports = profileInfoController
+module.exports = profileInfo

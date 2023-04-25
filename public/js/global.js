@@ -21,13 +21,13 @@ const checkPhotoProfile = (photo) => {
     }
 }
 
-const createOnePost = (photo, userName, title, srcImg, time, id) => {
+const createOnePost = (photo, userName, title, srcImg, time, id, totalVotes) => {
     const postSide = createAndAppendElement(bodyOfPosts, 'div', ['post-side'])
     postSide.id = id
     const likeDislike = createAndAppendElement(postSide, 'div', ['like-dislike'])
-    createAndAppendElement(likeDislike, 'i', ['fa-regular', 'fa-square-caret-up'])
-    createAndAppendElement(likeDislike, 'p', [], '27.5K')
-    createAndAppendElement(likeDislike, 'i', ['fa-regular', 'fa-square-caret-down'])
+    createAndAppendElement(likeDislike, 'i', ['fa-regular', 'fa-square-caret-up', `up${id}`]).setAttribute('id', id)
+    createAndAppendElement(likeDislike, 'p', [`count${id}`], totalVotes)
+    createAndAppendElement(likeDislike, 'i', ['fa-regular', 'fa-square-caret-down', `down${id}`]).setAttribute('id', id)
     const mainPost = createAndAppendElement(postSide, 'div', ['main-post'])
     const postPart1 = createAndAppendElement(mainPost, 'div', ['post-part-1'])
     const person = createAndAppendElement(postPart1, 'div', ['person'])
@@ -96,8 +96,10 @@ const getAllPost = () => {
             Accept: 'application/json, text/plain, */*',
             'Content-Type': 'text/html'
         }
-    }).then((data) => data.json()).then((data) =>
-        data.allData.reverse().forEach((post) => createOnePost(post.photo, post.username, post.title, post.body, resetTime(post.created_at), post.id))
+    }).then((data) => data.json()).then((data) => {
+        console.log(data)
+        data.allData.reverse().forEach((post) => createOnePost(post.photo, post.username, post.title, post.body, resetTime(post.created_at), post.id, post.total_votes))
+    }
     )
 }
 

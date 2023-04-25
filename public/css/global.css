@@ -808,8 +808,10 @@ header {
 .fa-square-caret-down:before,
 .fa-square-caret-up:before {
   font-size: 2rem;
+}
+.fa-square-caret-down,
+.fa-square-caret-up {
   color: #929292;
-  cursor: pointer;
 }
 .trending {
   color: aliceblue;

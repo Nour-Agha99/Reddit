@@ -47,6 +47,7 @@ postForm.addEventListener('submit', (btn) => {
     btn.preventDefault()
     const obj = new FormData(postForm)
     const data = Object.fromEntries(obj)
+    console.log(data)
     fetch('/api/v1/addPost', {
         method: 'POST',
         headers: {
@@ -56,4 +57,57 @@ postForm.addEventListener('submit', (btn) => {
         body: JSON.stringify(data)
     })
     location.reload()
+})
+
+const upDownVote = (postId, vote) => {
+    const data = { postId, vote }
+    console.log(data)
+    fetch('/api/v1/addVote', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then((result) => result.json()).then((result) => {
+        if (result.message === 'you are voted before') {
+            fetch('/api/v1/editVote', {
+                method: 'PATCH',
+                headers: {
+                    Accept: 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        }
+    }
+    )
+}
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('fa-square-caret-up')) {
+        const idOfPost = event.target.id
+        upDownVote(idOfPost, 1)
+
+        if (!event.target.classList.contains('active-up')) {
+            const count = parseInt(document.querySelector(`p.count${idOfPost}`).textContent)
+            document.querySelector(`p.count${idOfPost}`).textContent = count + 1
+        }
+
+        document.querySelector(`.fa-square-caret-up.up${idOfPost}`).classList.add('active-up')
+        document.querySelector(`.fa-square-caret-down.down${idOfPost}`).classList.remove('active-down')
+    }
+
+    if (event.target.classList.contains('fa-square-caret-down')) {
+        const idOfPost = event.target.id
+        upDownVote(idOfPost, 0)
+
+        if (!event.target.classList.contains('active-down')) {
+            const count = parseInt(document.querySelector(`p.count${idOfPost}`).textContent)
+            document.querySelector(`p.count${idOfPost}`).textContent = count - 1
+        }
+
+        document.querySelector(`.fa-square-caret-up.up${idOfPost}`).classList.remove('active-up')
+        document.querySelector(`.fa-square-caret-down.down${idOfPost}`).classList.add('active-down')
+    }
 })
