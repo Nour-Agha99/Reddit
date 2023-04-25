@@ -1,3 +1,4 @@
 const addVote = require('./addVote')
+const editVote = require('./editVote')
 
-module.exports = { addVote }
+module.exports = { addVote, editVote }

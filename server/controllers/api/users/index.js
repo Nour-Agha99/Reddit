@@ -1,3 +1,3 @@
-const profileInfoController = require('./profileInfo')
+const profileInfo = require('./profileInfo')
 
-module.exports = { profileInfoController }
+module.exports = { profileInfo }

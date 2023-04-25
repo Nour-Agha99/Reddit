@@ -1,6 +1,6 @@
 const { signUp, signIn, logout } = require('./auth')
 const { allPosts, addPost } = require('./posts')
-const { profileInfoController } = require('./users')
-const { addVote } = require('./votes')
+const { profileInfo } = require('./users')
+const { addVote, editVote } = require('./votes')
 
-module.exports = { signUp, signIn, logout, allPosts, addPost, profileInfoController, addVote }
+module.exports = { signUp, signIn, logout, allPosts, addPost, profileInfo, addVote, editVote }
