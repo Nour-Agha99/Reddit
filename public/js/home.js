@@ -47,7 +47,6 @@ postForm.addEventListener('submit', (btn) => {
     btn.preventDefault()
     const obj = new FormData(postForm)
     const data = Object.fromEntries(obj)
-    console.log(data)
     fetch('/api/v1/addPost', {
         method: 'POST',
         headers: {
@@ -61,7 +60,6 @@ postForm.addEventListener('submit', (btn) => {
 
 const upDownVote = (postId, vote) => {
     const data = { postId, vote }
-    console.log(data)
     fetch('/api/v1/addVote', {
         method: 'POST',
         headers: {
@@ -110,4 +108,20 @@ document.addEventListener('click', (event) => {
         document.querySelector(`.fa-square-caret-up.up${idOfPost}`).classList.remove('active-up')
         document.querySelector(`.fa-square-caret-down.down${idOfPost}`).classList.add('active-down')
     }
+})
+
+fetch('/api/v1/getVote', {
+    method: 'GET',
+    headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'text/html'
+    }
+}).then((data) => data.json()).then((data) => {
+    data.allData.forEach((vote) => {
+        if (vote.vote === 1) {
+            document.querySelector(`.up${vote.post_id}`).classList.add('active-up')
+        } else if (vote.vote === 0) {
+            document.querySelector(`.down${vote.post_id}`).classList.add('active-down')
+        }
+    })
 })

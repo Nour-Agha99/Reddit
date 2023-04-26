@@ -124,9 +124,5 @@ formSignin.addEventListener('submit', (btn) => {
         },
         body: JSON.stringify(data)
     }).then(result => result.json())
-        .then((result) => {
-            if (result.message === 'The user has been logged successfully') {
-                window.location.href = '/sign/homePage'
-            }
-        })
+        .then((result) => { if (result.message === 'The user has been logged successfully') { window.location.href = '/sign/homePage' } })
 })

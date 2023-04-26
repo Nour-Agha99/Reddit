@@ -4,9 +4,7 @@ const { customError } = require('../../error')
 
 const editVote = (req, res, next) => {
     const userId = req.userInfo.id
-    console.log(userId, 'userId')
     const { postId, vote } = req.body
-    console.log(postId, vote, 'postId, vote')
 
     voteValidate.validateAsync({ userId, postId, vote }, { abortEarly: false })
         .then(() => checkVoteQuery(userId, postId))

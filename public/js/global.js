@@ -26,6 +26,9 @@ const createOnePost = (photo, userName, title, srcImg, time, id, totalVotes) => 
     postSide.id = id
     const likeDislike = createAndAppendElement(postSide, 'div', ['like-dislike'])
     createAndAppendElement(likeDislike, 'i', ['fa-regular', 'fa-square-caret-up', `up${id}`]).setAttribute('id', id)
+    if (totalVotes === null) {
+        totalVotes = 0
+    }
     createAndAppendElement(likeDislike, 'p', [`count${id}`], totalVotes)
     createAndAppendElement(likeDislike, 'i', ['fa-regular', 'fa-square-caret-down', `down${id}`]).setAttribute('id', id)
     const mainPost = createAndAppendElement(postSide, 'div', ['main-post'])
@@ -66,7 +69,6 @@ const createOnePost = (photo, userName, title, srcImg, time, id, totalVotes) => 
 }
 
 const resetTime = (creatAt) => {
-    console.log(creatAt)
     let theTime = ''
     const now = Date.now()
     const timesTamp = new Date(creatAt)
@@ -74,7 +76,6 @@ const resetTime = (creatAt) => {
     const toSeconds = Math.floor(melSecond / (1000))
     const toMinutes = Math.floor(melSecond / (1000 * 60))
     const toHours = Math.floor(melSecond / (1000 * 60 * 60))
-    console.log(melSecond / (1000))
 
     if (melSecond < (1000 * 60)) {
         theTime = `${toSeconds} second ago `
@@ -96,11 +97,7 @@ const getAllPost = () => {
             Accept: 'application/json, text/plain, */*',
             'Content-Type': 'text/html'
         }
-    }).then((data) => data.json()).then((data) => {
-        console.log(data)
-        data.allData.reverse().forEach((post) => createOnePost(post.photo, post.username, post.title, post.body, resetTime(post.created_at), post.id, post.total_votes))
-    }
-    )
+    }).then((data) => data.json()).then((data) => data.allData.reverse().forEach((post) => createOnePost(post.photo, post.username, post.title, post.body, resetTime(post.created_at), post.id, post.total_votes)))
 }
 
 getAllPost()

@@ -9,7 +9,6 @@ const addVote = (req, res, next) => {
     voteValidate.validateAsync({ userId, postId, vote }, { abortEarly: false })
         .then(() => checkVoteQuery(userId, postId))
         .then((data) => {
-            console.log(data.rows)
             if (data.rowCount) {
                 res.json({ message: 'you are voted before' })
                 throw customError('you are voted before', 400)
@@ -17,7 +16,6 @@ const addVote = (req, res, next) => {
         })
         .then(() => addVoteQuery({ userId, postId, vote }))
         .then((data) => {
-            console.log(data)
             res.status(201).json({ allData: data.rows, message: 'The vote has been added successfully', status: 201 })
         })
         .catch((err) => err.details ? next(customError(err.details[0].message, 400)) : next(err))
