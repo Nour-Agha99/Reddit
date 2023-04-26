@@ -97,7 +97,6 @@ const resetTime = (creatAt) => {
     const melSecond = now - timesTamp.getTime()
     const toMinutes = Math.floor(melSecond / (1000 * 60))
     const toHours = Math.floor(melSecond / (1000 * 60 * 60))
-    console.log(melSecond / (1000))
 
     if (melSecond < (1000 * 60 * 60)) {
         theTime = `${toMinutes} minutes ago `
@@ -117,7 +116,6 @@ fetch(`/api/v1/profile/${theUser}`, {
         'Content-Type': 'text/html'
     }
 }).then((data) => data.json()).then((data) => data.data).then((data) => {
-    console.log(data[0])
     userPhoto.style = `background-image: url(${checkPhotoProfile(data[0].photo)});`
     userName.textContent = data[0].username
     userEmail.textContent = data[0].email

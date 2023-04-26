@@ -18,7 +18,7 @@ const signin = (req, res, next) => {
         .then((token) => {
             res.status(200).cookie('accessToken', token).json({ message: 'The user has been logged successfully', status: 200 })
         })
-        .catch((err) => err.details ? next(customError(err.details[0].message, 400)) : next(err))
+        .catch((err) => next(err))
 }
 
 module.exports = signin

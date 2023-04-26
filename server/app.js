@@ -3,6 +3,7 @@ const compression = require('compression')
 const path = require('path')
 const parser = require('cookie-parser')
 const router = require('./routes')
+const { serverError, clientError } = require('./controllers/error')
 
 const app = express()
 app.disable('x-powerd-by')
@@ -14,7 +15,9 @@ app.use([
     compression(),
     parser(),
     express.static(path.join(__dirname, '..', 'public')),
-    router
+    router,
+    serverError,
+    clientError
 ])
 
 module.exports = app
