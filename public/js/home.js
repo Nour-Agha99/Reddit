@@ -36,7 +36,9 @@ fetch('/api/v1/userData', {
     }
 }).then((data) => data.json()).then((data) => {
     personalImage.forEach((image) => {
-        image.style = `background-image: url(${data.user.photo});`
+        // eslint-disable-next-line no-undef
+        const checkImg = checkPhotoProfile(data.user.photo)
+        image.style = `background-image: url(${checkImg});`
     })
     personalName.forEach((name) => {
         name.textContent = data.user.username
