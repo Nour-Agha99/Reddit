@@ -3,12 +3,12 @@ const compression = require('compression')
 const path = require('path')
 const parser = require('cookie-parser')
 const router = require('./routes')
-const { serverError, clientError } = require('./controllers/error')
+const { serverError } = require('./controllers/error')
 
 const app = express()
 app.disable('x-powerd-by')
 
-app.set('port', process.env.PORT || 2710)
+app.set('port', process.env.PORT || 1000)
 app.use([
     express.json(),
     express.urlencoded({ extended: false }),
@@ -16,8 +16,7 @@ app.use([
     parser(),
     express.static(path.join(__dirname, '..', 'public')),
     router,
-    serverError,
-    clientError
+    serverError
 ])
 
 module.exports = app
