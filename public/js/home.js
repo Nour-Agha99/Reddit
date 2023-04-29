@@ -5,6 +5,7 @@ const container = document.querySelector('.postPopup')
 const postTitle = document.querySelector('.title-post')
 const deleteBtn = document.querySelector('.fa-trash')
 const postForm = document.querySelector('.post-form')
+const linkProfile = document.querySelector('.link-profile')
 const personalImage = document.querySelectorAll('.img')
 const personalName = document.querySelectorAll('.user-title')
 
@@ -43,6 +44,7 @@ fetch('/api/v1/userData', {
     personalName.forEach((name) => {
         name.textContent = data.user.username
     })
+    linkProfile.href = `/sign/profile/${data.user.username}`
 })
 
 postForm.addEventListener('submit', (btn) => {

@@ -8,11 +8,13 @@ const signin = (req, res, next) => {
         .then(() => checkUsernameQuery(username))
         .then((username) => {
             data = username.rows[0]
-            if (!username.rowCount) throw customError('The User_Name not exist, signup to get new account', 400)
+            if (!username.rowCount) {
+                throw customError('Username not exist, get new account', 400)
+            }
             return comparePassword(password, data.password)
         })
         .then((correctPassword) => {
-            if (!correctPassword) throw customError('The password not correct, restart your mind', 400)
+            if (!correctPassword) throw customError('The Password not correct, restart your mind', 400)
             return signToken(data)
         })
         .then((token) => {
